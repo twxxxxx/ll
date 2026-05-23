@@ -12,6 +12,7 @@
 #include "../honda_static.h"
 #include "../land_rover_v0.h"
 #include "../mazda_v0.h"
+#include "../mitsubishi_v0.h"
 #include "../psa.h"
 
 static const SubGhzProtocol* const protopirate_protocol_registry_fm_items[] = {
@@ -27,6 +28,7 @@ static const SubGhzProtocol* const protopirate_protocol_registry_fm_items[] = {
 &honda_static_protocol,
 &land_rover_v0_protocol,
 &mazda_v0_protocol,
+&mitsubishi_v0_protocol,
 &kia_protocol_v7,
 &psa_protocol,
 };

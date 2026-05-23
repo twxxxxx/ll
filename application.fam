@@ -6,6 +6,7 @@ App(
     entry_point="protopirate_app",
     requires=["gui"],
     stack_size=2 * 1024,
+    sources=["*.c*"],
     fap_description="Decode car key fob signals from Sub-GHz",
     fap_version="2.9",
     fap_icon="images/protopirate_10px.png",
@@ -30,6 +31,7 @@ App(
         "protocols/kia_v1.c",
         "protocols/porsche_touareg.c",
         "protocols/psa.c",
+        "protocols/psa_crypto.c",
         "protocols/subaru.c",
         "protocols/vag.c",
         "protocols/star_line.c",
@@ -59,7 +61,37 @@ App(
         "protocols/honda_static.c",
         "protocols/land_rover_v0.c",
         "protocols/mazda_v0.c",
+        "protocols/mitsubishi_v0.c",
         "protocols/psa.c",
+        "protocols/psa_crypto.c",
     ],
+    fal_embedded=True,
+)
+
+App(
+    appid="protopirate_emulate_plugin",
+    apptype=FlipperAppType.PLUGIN,
+    entry_point="protopirate_emulate_plugin_ep",
+    requires=["proto_pirate"],
+    sources=[
+        "scenes/plugins/protopirate_emulate_plugin.c",
+    ],
+    fal_embedded=True,
+)
+
+App(
+    appid="protopirate_psa_bf_plugin",
+    apptype=FlipperAppType.PLUGIN,
+    entry_point="protopirate_psa_bf_plugin_ep",
+    requires=["proto_pirate"],
+    cdefines=["PROTOPIRATE_PSA_BF_PLUGIN_BUILD=1"],
+    sources=[
+        "scenes/plugins/protopirate_psa_bf_plugin.c",
+        "protocols/psa_crypto.c",
+        "protocols/psa_crypto_bf.c",
+        "protocols/psa_bf_core.c",
+        "protocols/protocols_common.c",
+    ],
+    fap_icon_assets="images",
     fal_embedded=True,
 )
