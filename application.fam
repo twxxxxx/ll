@@ -4,7 +4,7 @@ App(
     apptype=FlipperAppType.EXTERNAL,
     targets=["f7"],
     entry_point="protopirate_app",
-    requires=["gui"],
+    requires=["gui","subghz"],
     stack_size=2 * 1024,
     sources=["*.c*"],
     fap_description="Decode car key fob signals from Sub-GHz",
